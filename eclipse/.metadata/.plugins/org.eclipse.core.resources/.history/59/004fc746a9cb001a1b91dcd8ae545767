@@ -114,7 +114,7 @@ public class HandleCollabMining
 		}
 	}
 	
-	/*private static class MiningPlayer
+	private static class MiningPlayer
 	{
 		private EntityPlayer player;
 		private long started;
@@ -154,5 +154,5 @@ public class HandleCollabMining
 			
 			return EnchantmentHelper.getEnchantmentLevel(ExtraEnchantsMain.collabMining.effectId, player.getHeldItem());
 		}
-	}*/
+	}
 }
