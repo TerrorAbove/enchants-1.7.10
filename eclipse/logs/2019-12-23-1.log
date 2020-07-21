@@ -1,0 +1,179 @@
+[22:29:22] [main/INFO]: Setting user: Player504
+[22:29:23] [Client thread/INFO]: LWJGL Version: 2.9.1
+[22:29:31] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Terror's Extra Enchantments
+[22:29:32] [Sound Library Loader/INFO]: Sound engine started
+[22:29:33] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[22:29:33] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[22:29:33] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Terror's Extra Enchantments
+[22:29:33] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[22:29:34] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[22:29:34] [Sound Library Loader/INFO]: Sound engine started
+[22:36:14] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[22:36:14] [Server thread/INFO]: Generating keypair
+[22:36:15] [Server thread/INFO]: Preparing start region for level 0
+[22:36:16] [Server thread/INFO]: Changing view distance to 12, from 10
+[22:36:16] [Server thread/INFO]: Player504[local:E:51b755d9] logged in with entity id 169 at (-171.08101595356024, 71.0, 225.3613627113274)
+[22:36:16] [Server thread/INFO]: Player504 joined the game
+[22:36:22] [Server thread/INFO]: Saving and pausing game...
+[22:36:22] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[22:36:22] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[22:36:22] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[22:36:26] [Client thread/INFO]: Started on 55546
+[22:36:26] [Client thread/INFO]: [CHAT] Local game hosted on port 55546
+[22:37:14] [User Authenticator #1/WARN]: Failed to verify username but will let them in anyway!
+[22:37:15] [Server thread/INFO]: Player706[/10.0.0.60:55586] logged in with entity id 2804 at (-208.5, 70.0, 243.5)
+[22:37:15] [Server thread/INFO]: Player706 joined the game
+[22:37:15] [Client thread/INFO]: [CHAT] Player706 joined the game
+[22:37:27] [Server thread/INFO]: [Player706: Teleported Player706 to Player504]
+[22:37:27] [Client thread/INFO]: [CHAT] [Player706: Teleported Player706 to Player504]
+[22:37:33] [Server thread/INFO]: Player706 has just earned the achievement [Taking Inventory]
+[22:37:33] [Client thread/INFO]: [CHAT] Player706 has just earned the achievement [Taking Inventory]
+[22:37:39] [Server thread/INFO]: Player504 has just earned the achievement [Taking Inventory]
+[22:37:39] [Client thread/INFO]: [CHAT] Player504 has just earned the achievement [Taking Inventory]
+[22:37:46] [Server thread/INFO]: [Player504: Set own game mode to Creative Mode]
+[22:37:46] [Client thread/INFO]: [CHAT] Your game mode has been updated
+[22:38:08] [Server thread/INFO]: [Player504: Set own game mode to Survival Mode]
+[22:38:08] [Client thread/INFO]: [CHAT] Your game mode has been updated
+[22:39:26] [Server thread/INFO]: Stopping server
+[22:39:26] [Server thread/INFO]: Saving players
+[22:39:26] [Server thread/INFO]: Saving worlds
+[22:39:26] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[22:39:26] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[22:39:26] [Server thread/INFO]: Sa[22:39:31] [Client thread/INFO]: Stopping!
+22:39:28] [Client thread/INFO]: Stopping!
+[22:41:11] [main/INFO]: Setting user: Player526
+[22:41:14] [Client thread/INFO]: LWJGL Version: 2[22:41[22:41:25] [Client thread/INFO]: Reloading Resour[22:41:26] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Terror's Extra Enchantments
+[22:41:27] [S[22:41:28] [Client thread/INFO]: Created: 16x16 t[22:41:29] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[22:41:29] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[22:41:29] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Terror's Extra Enchantments
+[22:41:29] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[22:41:29] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[22:41:30] [S[22:41:56] [Client thread/INFO]: Connecting to 10.0.0.60, 55669
+[22:42:03] [Client thread/INFO]: [CHAT] Player479, Player526
+[22:42:03] [Client thread/INFO]: [CHAT] Teleported Player526 to Player479
+[22:42:09] [Client thread/INFO]: [CHAT] Your game mode has been updated
+[22:42:10] [Client thread/INFO]: [CHAT] Player526 has just earned the achievement [Taking Inventory]
+[22:42:52] [Client thread/INFO]: [CHAT] Your game mode has been updated
+[22:43:28] [Client thread/INFO]: [CHAT] Player479 has just earned the achievement [Taking Inventory]
+[22:43:55] [Client thread/INFO]: Stopping!
+:45] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[22:41:45] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[22:41:45] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[22:41:49] [Server thread/INFO]: Saving and pausing game...
+[22:41:49] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[22:41:49] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[22:41:49] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[22:41:51] [Client thread/INFO]: Started on 55669
+[22:41:51] [Client thread/INFO]: [CHAT] Local game hosted on port 55669
+[22:41:58] [User Authenticator #1/WARN]: Failed to verify username but will let them in anyway!
+[22:41:58] [Server thread/INFO]: Player526[/10.0.0.60:55703] logged in with entity id 450 at (-209.5, 69.0, 252.5)
+[22:41:58] [Server thread/INFO]: Player526 joined the game
+[22:41:58] [Client thread/INFO]: [CHAT] Player526 joined the game
+[22:42:03] [Server thread/INFO]: [Player526: Teleported Player526 to Player479]
+[22:42:03] [Client thread/INFO]: [CHAT] [Player526: Teleported Player526 to Player479]
+[22:42:09] [Server thread/INFO]: [Player526: Set own game mode to Creative Mode]
+[22:42:09] [Client thread/INFO]: [CHAT] [Player526: Set own game mode to Creative Mode]
+[22:42:10] [Server thread/INFO]: Player526 has just earned the achievement [Taking Inventory]
+[22:42:10] [Client thread/INFO]: [CHAT] Player526 has just earned the achievement [Taking Inventory]
+[22:42:52] [Server thread/INFO]: [Player526: Set own game mode to Survival Mode]
+[22:42:52] [Client thread/INFO]: [CHAT] [Player526: Set own game mode to Survival Mode]
+[22:43:28] [Server thread/INFO]: Player479 has just earned the achievement [Taking Inventory]
+[22:43:28] [Client thread/INFO]: [CHAT] Player479 has just earned the achievement [Taking Inventory]
+[22:43:51] [Server thread/INFO]: Stopping server
+[22:43:51] [Server thread/INFO]: Saving players
+[22:43:51] [Server thread/INFO]: Saving worlds
+[22:43:51] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[22:43:51] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[22:43:51] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[22:43:52] [Client thread/INFO]: Stopping!
+[22:52:19] [main/INFO]: Setting user: Player191
+[22:52:21] [Client thread/INFO]: LWJGL Version: 2.9.1
+[22:52:33] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loade[22:52:36] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Terror's Extra Enchantments
+[22:52:37] [Sound Library Loader/INFO]: Sound engine started
+[22:52:38] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[22:52:38] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[22:52:38] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Terror's Extra Enchantments
+[22:52:39] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[22:52:39] [Client thread/INFO[22:55:10] [Client thread/INFO]: Connecting to 10.0.0.60, 55927
+[22:55:16] [Client thread/INFO]: [CHAT] Player950, Player191
+[22:55:16] [Client thread/INFO]: [CHAT] Teleported Player191 to Player950
+[22:57:25] [Client thread/INFO]: Stopping!
+:54:56] [Server thread/INFO]: Preparing start region for level 0
+[22:54:57] [Server thread/INFO]: Changing view distance to 12, from 10
+[22:54:57] [Server thread/INFO]: Player950[local:E:3c216bd3] logged in with entity id 239 at (-170.8532362674345, 71.0, 224.9823158545031)
+[22:54:58] [Server thread/INFO]: Player950 joined the game
+[22:55:01] [Server thread/INFO]: Saving and pausing game...
+[22:55:01] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[22:55:01] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[22:55:01] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[22:55:03] [Client thread/INFO]: Started on 55927
+[22:55:03] [Client thread/INFO]: [CHAT] Local game hosted on port 55927
+[22:55:12] [User Authenticator #1/WARN]: Failed to verify username but will let them in anyway!
+[22:55:12] [Server thread/INFO]: Player191[/10.0.0.60:55962] logged in with entity id 460 at (-206.5, 71.0, 234.5)
+[22:55:12] [Server thread/INFO]: Player191 joined the game
+[22:55:12] [Client thread/INFO]: [CHAT] Player191 joined the game
+[22:55:16] [Server thread/INFO]: [Player191: Teleported Player191 to Player950]
+[22:55:16] [Client thread/INFO]: [CHAT] [Player191: Teleported Player191 to Player950]
+[22:57:21] [Server thread/INFO]: Stopping server
+[22:57:21] [Server thread/INFO]: Saving players
+[22:57:21] [Server thread/INFO]: Saving worlds
+[22:57:21] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[22:57:21] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[22:57:21] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[22:57:22] [Client thread/INFO]: Stopping!
+[23:01:13] [main/INFO]: Setting user: Player436
+[23:01:16] [Client thread/INFO]: LWJGL Version: 2[23:01[23:01:27] [Client thread/INFO]: Reloading Resour[23:01:29] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Terror's Extra Enchantments
+[23:01:29] [S[23:01:32] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[23:01:32] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[23:01:32] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Terror's Extra Enchantments
+[23:01:33] [Client thread/INFO]: Created: 512x256[23:01:33] [Client threa[23:01:33] [Client thread/INFO]: Created: 256x256[23:01:33] [Client thre[23:01:34] [Sound Library Loader/INFO]: Sound eng[23:01:34] [S[23:01:40] [Server thread/INFO]: Starting integra[23:03:03] [Client thread/INFO]: Connecting to 10.0.0.60, 56050
+[23:03:10] [Client thread/INFO]: [CHAT] Player436, Player680
+[23:03:10] [Client thread/INFO]: [CHAT] Teleported Player680 to Player436
+[23:04:00] [Client thread/INFO]: Stopping!
+ver thread/INFO]: Player436[local:E:b7c01212] logged in with entity id 259 at (-171.2845325915383, 71.0, 225.1465402329511)
+[23:01:42] [Server thread/INFO]: Player436 joined the game
+[23:02:49] [Client thread/INFO]: [CHAT] You do not have permission to use this command
+[23:02:49] [Server thread/INFO]: Saving and pausing game...
+[23:02:49] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[23:02:49] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[23:02:49] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[23:02:52] [Client thread/INFO]: Started on 56050
+[23:02:52] [Client thread/INFO]: [CHAT] Local game hosted on port 56050
+[23:02:54] [Server thread/INFO]: [Player436: Set the time to 1000]
+[23:02:54] [Client thread/INFO]: [CHAT] Set the time to 1000
+[23:02:57] [Server thread/INFO]: [Player436: Set game difficulty to Peaceful]
+[23:02:57] [Client thread/INFO]: [CHAT] Set game difficulty to Peaceful
+[23:03:05] [User Authenticator #1/WARN]: Failed to verify username but will let them in anyway!
+[23:03:06] [Server thread/INFO]: Player680[/10.0.0.60:56085] logged in with entity id 2247 at (-206.5, 70.0, 242.5)
+[23:03:06] [Server thread/INFO]: Player680 joined the game
+[23:03:06] [Client thread/INFO]: [CHAT] Player680 joined the game
+[23:03:10] [Server thread/INFO]: [Player680: Teleported Player680 to Player436]
+[23:03:10] [Client thread/INFO]: [CHAT] [Player680: Teleported Player680 to Player436]
+[23:03:57] [Server thread/INFO]: Stopping server
+[23:03:57] [Server thread/INFO]: Saving players
+[23:03:57] [Server thread/INFO]: Saving worlds
+[23:03:57] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[23:03:57] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[23:03:57] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[23:03:58] [Client thread/INFO]: Stopping!
+[23:05:31] [main/INFO]: Setting user: Player450
+[23:05:34] [Client thread/INFO]: LWJGL Version: 2[23:05[23:05:45] [Client thread/INFO]: Reloading Resour[23:05:46] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Terror's Extra Enchantments
+[23:05:47] [Sound Library Loader/INFO]: Sound engine started
+[23:05:48] [Client thread/INFO]: Created: 16x16 textures/blocks-atlas
+[23:05:48] [Client thread/INFO]: Created: 16x16 textures/items-atlas
+[23:05:48] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Terror's Extra Enchantments
+[23:05:48] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[23:05:48] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[23:05:49] [Sound Library Loader/INFO]: Sound engine started
+[23:05:52] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[23:05:52] [Server thread/INFO]: Generating keypair
+[23:05:52] [Server thread/INFO]: Preparing start region for level 0
+[23:05:53] [Server thread/INFO]: Changing view distance to 12, from 10
+[23:05:54] [Server thread/INFO]: Player817[local:E:96c95a1d] logged in with entity id 191 at (-171.12051176296606, 71.0, 224.98968164307658)
+[23:05:54] [Server thread/INFO]: Player817 joined the game
+[23:05:58] [Server thread/INFO]: Saving and pausing game...
+[23:05:58] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[23:05:58] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[23:05:58] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[23:06:12] [Client thread/INFO]: Started on 56166
+[23:06:12] [Client thread/INFO]: [CHAT] Local game hosted on port 56166

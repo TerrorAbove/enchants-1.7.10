@@ -1,0 +1,8 @@
+[16:53:38] [main/INFO]: Loading tweak class name net.minecraft.launchwrapper.VanillaTweaker
+[16:53:38] [main/INFO]: Using primary tweak class name net.minecraft.launchwrapper.VanillaTweaker
+[16:53:38] [main/INFO]: Calling tweak class net.minecraft.launchwrapper.VanillaTweaker
+[16:53:38] [main/ERROR]: Unable to launch
+java.lang.NoSuchMethodException: net.minecraft.client.Minecraft.main([Ljava.lang.String;)
+	at java.lang.Class.getMethod(Unknown Source) ~[?:1.8.0_65]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:132) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]

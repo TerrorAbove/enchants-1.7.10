@@ -1,0 +1,5 @@
+package com.terrorAndBlueMods.weaponDistanceEnchant;
+
+public class UpdateBleedIconMessage {
+
+}

@@ -1,0 +1,189 @@
+package com.terrorAndBlueMods.weaponDistanceEnchant;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import cpw.mods.fml.common.eventhandler.EventPriority;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityDamageSource;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+
+public class HandleLivingEvent
+{
+	public static final HashMap<EntityLivingBase, BleedList> BLEEDS = new HashMap<EntityLivingBase, BleedList>();
+	
+	private static final DamageSource DAMAGE_SRC_BLEED = new DamageSource("Bleed").setDamageIsAbsolute();
+	private static final DamageSource DAMAGE_SRC_DEATHMARK = new DamageSource("DeathMark").setDamageIsAbsolute();
+	
+	//TODO temporary testing
+	private BleedDeathMark firstDeathMark;
+	
+	@SubscribeEvent(priority=EventPriority.HIGHEST)
+	public void entityHurt(LivingHurtEvent event)//high priority events, like nerfing reach damage at a distance
+	{
+		DamageSource source = event.source;
+		
+		if(source.getSourceOfDamage() instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer)source.getSourceOfDamage();
+			
+			ItemStack weapon = player.getCurrentEquippedItem();
+			
+			int reaching = EnchantmentHelper.getEnchantmentLevel(ExtraEnchantsMain.reachingWeapon.effectId, weapon);
+
+			if (reaching > 0)
+			{
+				double maxExtraDistance = Utils.getMaxExtraDistanceForReachLevel(reaching);
+				float baseMaxDistance = player.capabilities.isCreativeMode ? 6.0F : 4.5F;
+				float distance = event.entityLiving.getDistanceToEntity(player);
+				
+				float extraDist = distance - baseMaxDistance;
+				
+				if(extraDist > 0)
+				{
+					event.ammount *= (float)Math.pow(0.85, extraDist);//additional 15% less damage per extra block
+				}
+			}
+		}
+	}
+	
+	@SubscribeEvent(priority=EventPriority.LOWEST)
+	public void entityHurt2(LivingHurtEvent event)//low priority events, like applying a bleed effect at the end
+	{
+		DamageSource source = event.source;
+		
+		if(source.getSourceOfDamage() instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer)source.getSourceOfDamage();
+			
+			ItemStack weapon = player.getCurrentEquippedItem();
+			
+			int serrated = EnchantmentHelper.getEnchantmentLevel(ExtraEnchantsMain.serrated.effectId, weapon);
+			int deathmark = EnchantmentHelper.getEnchantmentLevel(ExtraEnchantsMain.deathMark.effectId, weapon);
+			
+			if (serrated > 0 && !event.isCanceled())
+			{
+				event.ammount /= 2;//half damage for the regular hit
+				
+				float enemyHealthRatio = event.entityLiving.getHealth() / event.entityLiving.getMaxHealth();
+
+				BleedList list = BLEEDS.get(event.entityLiving);
+
+				if(list == null)
+					list = new BleedListCombining();
+				
+				Location loc = new Location(event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, event.entityLiving.worldObj.provider.dimensionId);
+
+				//damage based on targets current health. At max health, they take a full regular sword hit over 10 seconds
+				list.add(new BleedSerrated(2F * enemyHealthRatio * event.ammount, 200, 40, loc, event.entityLiving, serrated));//dealt over 10 seconds, 5 hits
+
+				BLEEDS.put(event.entityLiving, list);
+			}
+			
+			if (deathmark > 0 && !event.isCanceled())
+			{
+				BleedList list = BLEEDS.get(event.entityLiving);
+				
+				boolean first = false;
+				if(list == null)
+				{
+					list = new BleedListCombining();
+					first = true;
+				}
+				
+				BleedDeathMark mark = new BleedDeathMark(event.ammount * 0.25F, event.entityLiving, deathmark);
+				list.add(mark);//25% damage added to death mark pool
+				
+				if(first)
+					firstDeathMark = mark;
+				
+				float hp = event.entityLiving.getHealth()/event.entityLiving.getMaxHealth();
+				hp *= 10000;
+				hp = (int) hp;
+				hp /= 100;
+				
+				player.addChatComponentMessage(new ChatComponentText("hp="+hp+"% kill="+firstDeathMark.willKillTarget()));
+				
+				BLEEDS.put(event.entityLiving, list);
+				
+				event.ammount *= 0.75F;//-25% damage for the regular hit
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void livingEvent(LivingUpdateEvent event)
+	{
+		if(event.entityLiving != null)
+		{
+			BleedList list = BLEEDS.get(event.entityLiving);
+			
+			float hp = event.entityLiving.getHealth();
+			
+			if(list != null)
+			{
+				if(list.size() > 0 && !event.entityLiving.isDead)
+				{
+					float damage = list.getTotalSerratedDamageThisTick();
+					
+					if(damage > 0)
+					{
+						Utils.applyHitWithArmorPen(event.entityLiving, DAMAGE_SRC_BLEED, damage, 0.5F, true);
+						System.out.println("Serrated bleed dealt "+damage+" damage. Actual = "+(hp - event.entityLiving.getHealth()));
+					}
+					
+					hp = event.entityLiving.getHealth();
+					damage = list.getTotalDeathmarkDamageThisTick();
+					
+					if(damage > 0)
+					{
+						Utils.applyHitWithArmorPen(event.entityLiving, DAMAGE_SRC_DEATHMARK, damage, 1F, true);
+						System.out.println("Death mark dealt "+damage+" damage. Actual = "+(hp - event.entityLiving.getHealth()));
+					}
+					
+					if(event.entityLiving.ticksExisted % 20 == 0)
+					{
+						for(Bleed b : list)
+						{
+							String info = (int)b.damageDealt + " / " + (int)(b.damageDealt + b.damageRemaining);
+							
+							
+						}
+						PacketDispatcher.sendToAllAround(new UpdateBleedIconMessage(list.toArray(new Bleed[]{})), dimension, x, y, z, range);
+					}
+				}
+				else
+				{
+					BLEEDS.remove(event.entityLiving);
+				}
+			}
+		}
+	}
+	
+	@SubscribeEvent(priority=EventPriority.LOWEST)
+	public void livingAttackEvent(LivingAttackEvent event)
+	{
+		if(event.source == DAMAGE_SRC_BLEED || event.source == DAMAGE_SRC_DEATHMARK)
+		{
+			event.setCanceled(false);
+			
+			if(event.source == DAMAGE_SRC_DEATHMARK)
+			{
+				event.entityLiving.setHealth(Math.max(0, event.entityLiving.getHealth() - event.ammount));
+			}
+		}
+	}
+}

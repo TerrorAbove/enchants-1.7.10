@@ -1,0 +1,16 @@
+[
+{
+  "modid": "weapon_distance_enchant",
+  "name": "Weapon Distance Enchantment",
+  "description": "Adds to the game the Weapon Distance Enchantment, which makes consecutive weapon hits extend the reach of the weapon.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ExampleDude"],
+  "credits": "The Forge and FML guys, for making this example",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

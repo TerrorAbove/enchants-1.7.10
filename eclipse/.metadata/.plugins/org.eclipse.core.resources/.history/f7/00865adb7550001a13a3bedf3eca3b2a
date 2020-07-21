@@ -1,0 +1,42 @@
+package com.terrorAndBlueMods.weaponDistanceEnchant;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class BleedList extends ArrayList<Bleed>
+{
+	public float getTotalSerratedDamageThisTick()
+	{
+		float damage = 0;
+		
+		Iterator<Bleed> iter = this.iterator();
+		
+		while(iter.hasNext())
+		{
+			Bleed bleed = iter.next();
+			
+			if(bleed != null && bleed.getTimeLeft() > 0)
+			{
+				float movedMultiplier = 1.0F;
+				
+				if(bleed instanceof BleedSerrated)
+				{
+					BleedSerrated bs = (BleedSerrated)bleed;
+					
+					if(bs.targetMoved(2.0F))//target moved more than two blocks from where bleed was inflicted
+					{
+						movedMultiplier += 0.5F * (bs.getSerratedLevel()+1);//2.0, 2.5, 3.0 based on serrated level
+					}
+				}
+				
+				damage += movedMultiplier * bleed.calculateDamage();
+			}
+			else
+			{
+				iter.remove();
+			}
+		}
+		
+		return damage;
+	}
+}

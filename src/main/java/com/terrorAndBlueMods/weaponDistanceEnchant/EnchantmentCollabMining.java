@@ -1,0 +1,33 @@
+package com.terrorAndBlueMods.weaponDistanceEnchant;
+
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnumEnchantmentType;
+
+public class EnchantmentCollabMining extends Enchantment
+{
+	public EnchantmentCollabMining(int id, int rarity)
+	{
+		super(id, rarity, EnumEnchantmentType.digger);
+		this.name = "collaborativeMining";
+	}
+
+	public int getMinEnchantability(int level)
+	{
+		return 10 + 12 * level;
+	}
+	
+	public int getMaxEnchantability(int level)
+	{
+		return getMinEnchantability(level) + 11;
+	}
+	
+	public int getMaxLevel()
+	{
+		return 3;
+	}
+	
+	public boolean canApplyTogether(Enchantment e)
+	{
+		return true;
+	}
+}

@@ -1,0 +1,141 @@
+package com.terrorAndBlueMods.weaponDistanceEnchant;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
+import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.world.BlockEvent.BreakEvent;
+
+public class HandleCollabMining
+{
+	//server side only map
+	private static final Map<Location, List<MiningPlayer>> COLLABORATIONS = new HashMap<Location, List<MiningPlayer>>();
+	
+	@SubscribeEvent
+	public void handleBreakSpeed(BreakSpeed event)
+	{
+		if(event.entityPlayer != null)
+		{
+			ItemStack held = event.entityPlayer.getHeldItem();
+			
+			if(held != null && held.getItem() instanceof ItemTool)
+			{
+				List<MiningPlayer> list = COLLABORATIONS.get(new Location(event.x, event.y, event.z, event.entityPlayer.worldObj.provider.dimensionId));
+				
+				if(list == null)
+					list = new ArrayList<MiningPlayer>();
+				
+				MiningPlayer mp = new MiningPlayer(event.entityPlayer, System.currentTimeMillis());
+				list.remove(mp);
+				list.add(mp);
+				
+				int level = EnchantmentHelper.getEnchantmentLevel(ExtraEnchantsMain.collabMining.effectId, held);
+				
+				if(level > 0)
+				{
+					
+
+				}
+			}
+			
+			
+			/*if(event.entityPlayer.worldObj.isRemote)
+			{
+				float speed = event.entityPlayer.getEntityData().getFloat(ExtraEnchantsMain.MODID+"_collabMiningSpeed");
+				long time = event.entityPlayer.getEntityData().getLong(ExtraEnchantsMain.MODID+"_collabMiningTime");
+				
+				if(speed > 0 && System.currentTimeMillis() - time <= 30000)
+				{
+					event.newSpeed = speed;//TODO fix sync issue, and only works for 1 person
+				}
+			}
+			else
+			{
+				ItemStack held = event.entityPlayer.getCurrentEquippedItem();
+				
+				if(held != null)
+				{
+					if(EnchantmentHelper.getEnchantmentLevel(ExtraEnchantsMain.collabMining.effectId, held) > 0)
+					{
+						COLLAB_OWNERS.put(event.entityPlayer, System.currentTimeMillis());
+					}
+				}
+				
+				for(EntityPlayer pl : COLLAB_OWNERS.keySet())
+				{
+					if(pl != null && pl != event.entityPlayer && !pl.isDead && pl.worldObj != null && pl.worldObj.provider.dimensionId == event.entityPlayer.worldObj.provider.dimensionId)
+					{
+						double xzdist = Math.sqrt(Math.pow(pl.posX - event.entityPlayer.posX, 2) + Math.pow(pl.posZ - event.entityPlayer.posZ, 2));
+						
+						//checks if we are close enough AND the owner has attempted to mine something within 30 seconds
+						if(xzdist <= 64 && Math.abs(pl.posY - event.entityPlayer.posY) <= 16 && System.currentTimeMillis() - COLLAB_OWNERS.getOrDefault(pl, 0L) <= 30000)
+						{
+							event.newSpeed *= (2 - xzdist/80);//at max distance of 64, speed is only increased by 20%.
+							event.entityPlayer.getEntityData().setFloat(ExtraEnchantsMain.MODID+"_collabMiningSpeed", event.newSpeed);
+							event.entityPlayer.getEntityData().setLong(ExtraEnchantsMain.MODID+"_collabMiningTime", COLLAB_OWNERS.getOrDefault(pl, 0L));
+							break;//stop here so that a player can only benefit from a single enchantment
+						}
+					}
+				}
+			}*/
+		}
+	}
+	
+	private static class MiningPlayer
+	{
+		private EntityPlayer player;
+		private long started;
+		
+		public MiningPlayer(EntityPlayer player, long started)
+		{
+			this.player = player;
+			this.started = started;
+		}
+		
+		public long timeElapsed()
+		{
+			return System.currentTimeMillis() - started;
+		}
+		
+		@Override
+		public boolean equals(Object o)
+		{
+			if(!(o instanceof MiningPlayer))
+				return false;
+			
+			EntityPlayer other = ((MiningPlayer)o).player;
+			
+			if(player == null && other == null)
+				return true;
+			
+			if(player == null || other == null)
+				return false;
+			
+			return player.isEntityEqual(other);
+		}
+		
+		public int getCollabLevel()
+		{
+			if(player == null || player.getHeldItem() == null)
+				return 0;
+			
+			return EnchantmentHelper.getEnchantmentLevel(ExtraEnchantsMain.collabMining.effectId, player.getHeldItem());
+		}
+		
+		public void refresh()
+		{
+			started = System.currentTimeMillis();
+		}
+	}
+}

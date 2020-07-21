@@ -1,0 +1,119 @@
+package com.terrorAndBlueMods.weaponDistanceEnchant;
+
+import io.netty.buffer.ByteBuf;
+
+public class Bleed
+{
+	protected float damageDealt;//the total damage dealt so far
+	protected float damageRemaining;//the amount of damage remaining
+	
+	protected int elapsed;//the number of ticks elapsed since bleed started originally
+	protected int timeLeft;//the amount of ticks remaining, can be reset by refreshing the bleed
+	
+	protected int frequency;//how often to deal damage, e.g. 2 means every other tick
+	
+	protected float damageFactor;//the percent of damageRemaining to deal each occurrence. It will remain constant once set
+	
+	public Bleed(float damage, int time)
+	{
+		this(damage, time, 20);//once per second is default frequency
+	}
+	
+	public Bleed(float damage, int time, int frequency)
+	{
+		this.damageRemaining = damage;
+		this.timeLeft = Math.max(1, time);
+		
+		this.frequency = Math.max(1, Math.min(timeLeft, frequency));
+		this.damageFactor = (float)this.frequency / timeLeft;
+		
+		this.damageDealt = 0;
+		this.elapsed = 0;
+	}
+	
+	public float calculateDamage()
+	{
+		float damage = 0;
+		
+		if(timeLeft > 0)
+		{
+			if((++elapsed) % frequency == 0)
+			{
+				damage = damageRemaining * damageFactor;
+			}
+			timeLeft--;
+		}
+		
+		damageRemaining -= damage;
+		damageDealt += damage;
+		
+		return damage;
+	}
+	
+	/**
+	 * Refreshes the Bleed based on data from another object. Specifically, adds to the pool of damage and resets the duration.
+	 * @param other the other Bleed object to copy data from
+	 * @return <code>true</code> if operation completed successfully, <code>false</code> if the request is not possible
+	 */
+	public boolean refresh(Bleed other)
+	{
+		this.damageRemaining += other.damageRemaining;
+		this.timeLeft = other.timeLeft;
+		return true;
+	}
+	
+	public float getDamageDealt()
+	{
+		return damageDealt;
+	}
+	
+	public float getDamageRemaining()
+	{
+		return damageRemaining;
+	}
+	
+	public int getElapsed()
+	{
+		return elapsed;
+	}
+	
+	public int getTimeLeft()
+	{
+		return timeLeft;
+	}
+	
+	public int getFrequency()
+	{
+		return frequency;
+	}
+	
+	
+	
+	//start of packet stuff
+	
+	private Bleed() {}
+	
+	public void toBytes(ByteBuf buf)
+	{
+		buf.writeFloat(damageDealt);
+		buf.writeFloat(damageRemaining);
+		buf.writeFloat(damageFactor);
+		buf.writeInt(elapsed);
+		buf.writeInt(timeLeft);
+		buf.writeInt(frequency);
+	}
+	
+	public static Bleed fromBytes(ByteBuf buf)
+	{
+		Bleed b = new Bleed();
+		
+		b.damageDealt = buf.readFloat();
+		b.damageRemaining = buf.readFloat();
+		b.damageFactor = buf.readFloat();
+		b.elapsed = buf.readInt();
+		b.timeLeft = buf.readInt();
+		b.frequency = buf.readInt();
+		
+		return b;
+	}
+}

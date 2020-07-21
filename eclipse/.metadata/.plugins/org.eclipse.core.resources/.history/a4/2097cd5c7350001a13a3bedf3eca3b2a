@@ -1,0 +1,42 @@
+package com.terrorAndBlueMods.weaponDistanceEnchant;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+
+public class BleedDeathMark extends Bleed//technically a Bleed, but it won't look like it
+{
+	private static final int DEATH_MARK_TIME = 60;//3 seconds
+	
+	private EntityLivingBase target;
+	
+	public BleedDeathMark(float damage)
+	{
+		super(damage, DEATH_MARK_TIME, DEATH_MARK_TIME);//it will hit once, at the end
+	}
+	
+	@Override
+	public void refresh(float damage, int time)//second parameter ignored
+	{
+		super.refresh(damage, DEATH_MARK_TIME);
+		this.elapsed = 0;//this will delay the hit
+	}
+	
+	@Override
+	public float calculateDamage()
+	{
+		float damage = super.calculateDamage();
+		
+		if(target != null && target.isEntityAlive())
+		{
+			float missingHealthRatio = (target.getMaxHealth() - target.getHealth()) / target.getMaxHealth();
+		}
+		else
+		{
+			damage = 0;
+		}
+		
+		return damage;
+	}
+	
+	//TODO method to check whether it will kill the target for graphical purposes
+}
